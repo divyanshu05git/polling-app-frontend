@@ -3,36 +3,38 @@ import { Input } from "../components/ui/input"
 import { Button } from "../components/ui/button"
 import { Separator } from "../components/ui/separator"
 import { useRef } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 
 export default function Signin() {
-  const usernameRef = useRef<HTMLInputElement | null >(null)
-    const passwordRef = useRef<HTMLInputElement | null >(null)
-    const navigate = useNavigate();
+  const usernameRef = useRef<HTMLInputElement | null>(null)
+  const passwordRef = useRef<HTMLInputElement | null>(null)
+  const navigate = useNavigate();
 
-    async function signin(){
-        const email = usernameRef.current?.value
-        const password = passwordRef.current?.value
+  async function signin() {
+    const email = usernameRef.current?.value
+    const password = passwordRef.current?.value
 
-        if(!email || !password){
-            alert("Required missing fields");
-            return;
-        }
-
-        try{
-            await axios.post("http://localhost:5050/signin",{
-                email:email,
-                password:password
-            })
-            alert("signin successful")
-            navigate("/")
-        }
-        catch(err){
-            alert("error signing in")
-        }
-
+    if (!email || !password) {
+      alert("Required missing fields");
+      return;
     }
+
+    try {
+      const res=await axios.post("http://localhost:5050/signin", {
+        email: email,
+        password: password
+      })
+      const token = res.data.token
+      localStorage.setItem("token", token);
+      alert("signin successful")
+      navigate("/")
+    }
+    catch (err) {
+      alert("error signing in")
+    }
+
+  }
   return (
     <div className="min-h-screen flex items-center justify-center
       bg-gradient-to-br from-background via-muted to-background p-6">
@@ -61,7 +63,13 @@ export default function Signin() {
           <Button variant="outline" className="w-full">
             Continue with Google
           </Button>
-        </CardContent>
+           <p className="text-center">
+          <Link to="/signup"
+                className="text-sm text-primary hover:underline">
+                New ? Signup
+            </Link>
+          </p> 
+        </CardContent> 
       </Card>
     </div>
   )
