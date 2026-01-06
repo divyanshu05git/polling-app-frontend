@@ -1,5 +1,8 @@
 
+import { Button } from "../components/ui/button"
 import { Card } from "../components/ui/card"
+
+
 
 
 export function Events(){
@@ -10,10 +13,19 @@ export function Events(){
             <div className="absolute top-4 left-4 pt-6">
                 <div className="mb-6 flex items-center gap-2">
                   <div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">
-                   P
+                    P
                   </div>
                   <span className="text-2xl font-bold">Pollify</span>
                 </div>
+            </div>
+
+            <div className="p-6 space-y-4">
+                <div className="flex justify-between items-center">
+                    <h1 className="text-xl font-semibold">My Rooms</h1>
+                    <Button>+ Create Room </Button>
+                </div>
+
+                
             </div>
         </div>
     )
