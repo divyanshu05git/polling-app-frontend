@@ -4,6 +4,7 @@ import Signin from './pages/SignIn';
 import Signup from './pages/SignUp';
 import LandingPage from './pages/Landing';
 import { Events } from './pages/Events';
+import CreateRoom from './pages/CreateRoom';
 
 
 
@@ -16,6 +17,7 @@ function App() {
       <Route path="/signin" element={ <Signin/>} />
       <Route path="/signup" element={ <Signup/>} />
       <Route path="/events" element={<Events/>}/>
+      <Route path="/createroom" element={<CreateRoom/>}/>
     </Routes>
     </BrowserRouter>
   )

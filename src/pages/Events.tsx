@@ -1,11 +1,13 @@
 
 import { Button } from "../components/ui/button"
 import { Card } from "../components/ui/card"
-
+import { useNavigate } from "react-router-dom"
 
 
 
 export function Events(){
+    const navigate = useNavigate();
+   
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background via-muted to-background px-6">
             
@@ -19,14 +21,18 @@ export function Events(){
                 </div>
             </div>
 
-            <div className="p-6 space-y-4">
-                <div className="flex justify-between items-center">
-                    <h1 className="text-xl font-semibold">My Rooms</h1>
-                    <Button>+ Create Room </Button>
-                </div>
+            <div className="p-6 space-y-4 absolute top-4 right-4 pt-6">
+                    <Button onClick={()=>{
+                        navigate("/createroom")
+                    }}>+ Create Room </Button>
+               
+            </div>
 
-                
+            {/* render all roooms */}
+            <div>
+                My rooms
             </div>
         </div>
     )
 }
+
